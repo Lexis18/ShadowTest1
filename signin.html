@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(./img/bg/bg5.webp);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(./img/bg/bg5.webp);
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat-x;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        .form {
+            width: 450px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 132, 255, 0.575);
+            position: relative;
+            z-index: 1;
+        }
+
+        .signin {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-container label {
+            position: absolute;
+            top: 56%;
+            left: 10px;
+            color: #999;
+            font-size: 16px;
+            pointer-events: none;
+            transform: translateY(-44%);
+            transition: all 0.5s ease;
+        }
+
+        .input-container input:focus~label,
+        .input-container input:not(:placeholder-shown)~label {
+            top: -12px;
+            left: 10px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: transparent;
+        }
+
+        .signin button {
+            width: 100%;
+            padding: 10px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .verify {
+            display: block;
+            background: #af0000;
+            transition: all 0.5s ease;
+            margin-bottom: 10px;
+        }
+
+        .verify:hover {
+            background: #8f0000;
+        }
+
+        .submit {
+            display: none;
+            background: #4c77af;
+            transition: all 0.5s ease-out;
+        }
+
+        .submit:hover {
+            background: #0051bb;
+        }
+
+        @media (max-width: 600px) {
+            .form {
+                width: 100%;
+            }
+
+            .signin {
+                flex-direction: column;
+            }
+
+            .verify,
+            .submit {
+                display: block;
+            }
+        }
+
+        /* Add these styles for error state */
+        .input-container.error input {
+            /* margin-top: 50px; */
+            border: 2px solid #8f0000;
+            box-shadow: 0 0 10px #af0000;
+        }
+
+        .input-container.error label {
+            /* color: #fff; */
+            margin-top: -20px;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #fff;
+            padding: 8px 5px;
+            background: #8f00007c;
+            font-size: 15px;
+            margin-top: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="form">
+        <div class="signin"><br>
+            <div class="input-container">
+                <input type="text" id="nic" name="nic" placeholder="NIC Number">
+                <label for="nic">NIC Number</label>
+            </div>
+            <button class="verify" id="verify" onclick="adminVerification();">Verify</button>
+            <br><br>
+            <div class="input-container">
+                <input type="text" id="verify_code" name="verify_code" placeholder="Verify Code">
+                <label for="verify_code">Verify Code</label>
+            </div>
+            <button class="submit" id="login" onclick="verify();">Sign In</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
